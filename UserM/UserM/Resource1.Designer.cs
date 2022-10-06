@@ -70,11 +70,11 @@ namespace UserM {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Fájlba írás.
         /// </summary>
-        internal static string FirstName {
+        internal static string button2 {
             get {
-                return ResourceManager.GetString("FirstName", resourceCulture);
+                return ResourceManager.GetString("button2", resourceCulture);
             }
         }
         
