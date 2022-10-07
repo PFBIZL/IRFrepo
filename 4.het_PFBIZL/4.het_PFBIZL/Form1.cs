@@ -17,7 +17,7 @@ namespace _4.het_PFBIZL
     public partial class Form1 : Form
     {
         RealEstateEntities context = new RealEstateEntities();
-        List<Flats> Flats;
+        List<Flat> Flats;
         Excel.Application xlApp;
         Excel.Workbook xlWB;
         Excel.Worksheet xlSheet;
@@ -26,11 +26,13 @@ namespace _4.het_PFBIZL
         {
             InitializeComponent();
             LoadData();
+            CreateExcel();
+
              
         }
         private void LoadData()
         {
-            List<Flats> Flats = context.Flat.ToList();
+            Flats = context.Flat.ToList();
         }
         private void CreateExcel()
         {
@@ -81,12 +83,17 @@ namespace _4.het_PFBIZL
 
 
             };
+            for (int i = 1; i < Headers.Length; i++)
+            {
+
+
+            }
             object[,] values = new object[Flats.Count, Headers.Length];
             int counter = 0;
-            foreach (Flats f in Flats)
+            foreach (Flat f in Flats)
             {
                 values[counter, 0] = f.Code;
-                // ...
+                
                 values[counter, 8] = "";
                 counter++;
             }

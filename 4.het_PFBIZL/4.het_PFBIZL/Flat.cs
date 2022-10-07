@@ -12,7 +12,7 @@ namespace _4.het_PFBIZL
     using System;
     using System.Collections.Generic;
     
-    public partial class Flats
+    public partial class Flat
     {
         public int FlatSK { get; set; }
         public string Code { get; set; }

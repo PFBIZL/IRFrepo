@@ -25,6 +25,6 @@ namespace _4.het_PFBIZL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Flats> Flat { get; set; }
+        public virtual DbSet<Flat> Flat { get; set; }
     }
 }
