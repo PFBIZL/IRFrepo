@@ -83,9 +83,9 @@ namespace _4.het_PFBIZL
 
 
             };
-            for (int i = 1; i < Headers.Length; i++)
+            for (int i = 0; i < Headers.Length; i++)
             {
-
+                xlSheet.Cells[1, 1] = Headers[0];
 
             }
             object[,] values = new object[Flats.Count, Headers.Length];
@@ -93,7 +93,20 @@ namespace _4.het_PFBIZL
             foreach (Flat f in Flats)
             {
                 values[counter, 0] = f.Code;
-                
+                values[counter, 1] = f.Vendor;
+                values[counter, 2] = f.Side;
+                values[counter, 3] = f.District;
+                if(f.Elevator==true)
+                {
+                    values[counter, 4] = "Van lift";
+                }
+                else
+                {
+                    values[counter, 4] = "Nincs lift";
+                }
+                values[counter, 5] = f.NumberOfRooms;
+                values[counter, 6] = f.FloorArea;
+                values[counter, 7] = f.Price;
                 values[counter, 8] = "";
                 counter++;
             }
