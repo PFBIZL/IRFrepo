@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _5het.MNBServiceReference;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,32 @@ using System.Windows.Forms;
 
 namespace _5het
 {
+    
     public partial class Form1 : Form
     {
+        MNBArfolyamServiceSoapClient mnbservices = new MNBArfolyamServiceSoapClient();
+
         public Form1()
         {
             InitializeComponent();
+            harmas();
+            
+           
         }
+
+        private void harmas()
+        {
+            var request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = "EUR",
+                startDate = "2020.01.01",
+                endDate = "2020-06-30"
+            };
+            var response = mnbservices.GetExchangeRates(request);
+            var result = response.GetExchangeRatesResult;
+
+        }
+
+        
     }
 }
