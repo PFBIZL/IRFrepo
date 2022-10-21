@@ -20,11 +20,12 @@ namespace _5het
         MNBArfolyamServiceSoapClient mnbservices = new MNBArfolyamServiceSoapClient();
         BindingList<RateData> Rates = new BindingList<RateData>();
         XmlDocument xml = new XmlDocument();
+        BindingList<string> Currencies = new BindingList<string>();
         
         public Form1()
         {
             InitializeComponent();
-
+            GetCurrencies();
             RefreshData();
             
             
@@ -58,6 +59,10 @@ namespace _5het
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                {
+                    continue;
+                }
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -98,6 +103,7 @@ namespace _5het
             otos();
             hatos();
             chart1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
 
         }
 
@@ -114,6 +120,11 @@ namespace _5het
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void GetCurrencies()
+        {
+
         }
     }
 }
