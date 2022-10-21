@@ -1,4 +1,5 @@
-﻿using _5het.MNBServiceReference;
+﻿using _5het.Entities;
+using _5het.MNBServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,13 @@ namespace _5het
     public partial class Form1 : Form
     {
         MNBArfolyamServiceSoapClient mnbservices = new MNBArfolyamServiceSoapClient();
+        BindingList<RateData> Rates = new BindingList<RateData>();
 
         public Form1()
         {
             InitializeComponent();
             harmas();
+            dataGridView1.DataSource = Rates;
             
            
         }
