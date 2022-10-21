@@ -24,11 +24,8 @@ namespace _5het
         public Form1()
         {
             InitializeComponent();
-            harmas();
-            dataGridView1.DataSource = Rates;
-            otos();
-            hatos();
-            chart1.DataSource = Rates;
+
+            RefreshData();
             
             
            
@@ -90,6 +87,16 @@ namespace _5het
 
         }
 
+        private void RefreshData()
+        {
+            
+            harmas();
+            dataGridView1.DataSource = Rates;
+            otos();
+            hatos();
+            chart1.DataSource = Rates;
+
+        }
         
     }
 }
