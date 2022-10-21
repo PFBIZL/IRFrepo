@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace _5het
@@ -26,6 +27,8 @@ namespace _5het
             harmas();
             dataGridView1.DataSource = Rates;
             otos();
+            hatos();
+            chart1.DataSource = Rates;
             
             
            
@@ -59,8 +62,31 @@ namespace _5het
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
                 var value = decimal.Parse(childElement.GetAttribute("value"));
+                if (unit != 0)
+                {
+                    rate.Value = value / unit;
+                }
 
             }
+
+        }
+
+        private void hatos()
+        {
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chart1.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chart1.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+
 
         }
 
