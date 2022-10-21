@@ -61,7 +61,7 @@ namespace _5het
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
-                var value = decimal.Parse(childElement.GetAttribute("value"));
+                var value = decimal.Parse(childElement.InnerText);
                 if (unit != 0)
                 {
                     rate.Value = value / unit;
