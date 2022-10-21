@@ -35,9 +35,12 @@ namespace _5het
         {
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
-                startDate = "2020.01.01",
-                endDate = "2020-06-30"
+                //currencyNames = "EUR",
+                //startDate = "2020.01.01",
+                //endDate = "2020-06-30"
+                currencyNames = comboBox1.SelectedItem.ToString(),
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString(),
             };
             var response = mnbservices.GetExchangeRates(request);
             var result = response.GetExchangeRatesResult;
@@ -89,7 +92,7 @@ namespace _5het
 
         private void RefreshData()
         {
-            
+            Rates.Clear();
             harmas();
             dataGridView1.DataSource = Rates;
             otos();
@@ -97,6 +100,20 @@ namespace _5het
             chart1.DataSource = Rates;
 
         }
-        
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
