@@ -62,8 +62,11 @@ namespace _7het_pfbizl
 
         private void button_ball_Click(object sender, EventArgs e)
         {
-            
-            Factory = new BallFactory();
+
+            Factory = new BallFactory
+            {
+                BallColor = button1.BackColor
+            };
 
         }
 
