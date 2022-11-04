@@ -20,6 +20,7 @@ namespace _7het_pfbizl
             get { return _factory; }
             set { _factory = value; }
         }
+
         public Form1()
         {
             InitializeComponent();
