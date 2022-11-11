@@ -13,7 +13,7 @@ namespace PRBIZ_week7
 {
     public partial class Form1 : Form
     {
-        PortfolioEntities context = new PortfolioEntities();
+        PortfolioEntities1 context = new PortfolioEntities1();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
         public Form1()
@@ -22,6 +22,7 @@ namespace PRBIZ_week7
             Ticks = context.Ticks.ToList();
             dataGridView1.DataSource = Ticks;
             CreatePortfolio();
+
             List<decimal> Nyereségek = new List<decimal>();
             int intervalum = 30;
             DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
