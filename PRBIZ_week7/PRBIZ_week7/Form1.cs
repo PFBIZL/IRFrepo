@@ -16,6 +16,7 @@ namespace PRBIZ_week7
     {
         PortfolioEntities1 context = new PortfolioEntities1();
         List<Tick> Ticks;
+       // List<Nyeresegek> _nyeresegek = new List<Nyeresegek>();
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
         public Form1()
         {
@@ -53,7 +54,7 @@ namespace PRBIZ_week7
             dataGridView2.DataSource = Portfolio;
         }
 
-        private decimal GetPortfolioValue(DateTime date)
+        public decimal GetPortfolioValue(DateTime date)
         {
             decimal value = 0;
             foreach (var item in Portfolio)
@@ -68,7 +69,7 @@ namespace PRBIZ_week7
             return value;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() != DialogResult.OK) return;
@@ -76,9 +77,9 @@ namespace PRBIZ_week7
             {
                 foreach (var t in Ticks)
                 {
-                    sw.Write(t.Index);
+                    sw.Write(t.Tick_id);
                     sw.Write(";");
-                    sw.Write(t.Volume.ToString());
+                    sw.Write(t.Price);
                     sw.WriteLine();
                 }
             }
