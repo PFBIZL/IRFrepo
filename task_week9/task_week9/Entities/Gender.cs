@@ -12,6 +12,5 @@ namespace task_week9.Entities
         Female = 2,
 
     }
-    Gender ádámNeme = Gender.Male;
-    Gender évaNeme = (Gender)2;
+    
 }
