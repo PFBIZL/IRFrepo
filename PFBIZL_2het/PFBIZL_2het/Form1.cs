@@ -33,6 +33,7 @@ namespace PFBIZL_2het
             public string Brand { get; set; }
             public string Name { get; set; }
            
+
             public int CountryFK { get; set; }
             public country Country { get; set; }
             public double Rating { get; set; }
