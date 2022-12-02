@@ -11,5 +11,6 @@ namespace task_week9.Entities
         public int BirthYear { get; set; }
         public Gender Gender { get; set; }
         public double P { get; set; }
+        public int Age { get; set; }
     }
 }
