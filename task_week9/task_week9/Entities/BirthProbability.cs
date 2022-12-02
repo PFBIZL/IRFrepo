@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_week9.Entities
 {
-    internal class BirthProbability
+    public class BirthProbability
     {
         public int BirthYear { get; set; }
         public int NbrOfChildren { get; set; }
