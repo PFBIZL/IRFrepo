@@ -27,8 +27,11 @@ namespace PFBIZL_week10
             this.Controls.Add(ga);
             //gc.AddPlayer();
             //gc.Start(true);
-
+            gc.AddPlayer(populationSize);
+            gc.Start(true);
             
+
+
 
             for (int i = 0; i < populationSize; i++)
             {
