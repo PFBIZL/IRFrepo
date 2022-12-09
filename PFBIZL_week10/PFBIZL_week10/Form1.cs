@@ -40,7 +40,7 @@ namespace PFBIZL_week10
 
         }
 
-        private void Gc_GameOver(object sender)
+        private void Gc_GameOver()
         {
             generation++;
             label1.Text = string.Format(
@@ -69,12 +69,13 @@ namespace PFBIZL_week10
                     gc.AddPlayer(b.Mutate());
 
                 var winners = from e in topPerformers
-                              where e.IsWinner
+                              where !e.IsWinner
                               select   e;
                 if (winners.Count() > 0)
                 {
                     winnerBrain = winners.FirstOrDefault().Brain.Clone();
-                    gc.GameOver -= Gc_GameOver;
+
+
                     return;
                 }
 
