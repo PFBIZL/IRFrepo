@@ -23,16 +23,16 @@ namespace PFBIZL_week10
         public Form1()
         {
             InitializeComponent();
+            button1.Visible = false;
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
             //gc.AddPlayer();
             //gc.Start(true);
-            gc.AddPlayer(populationSize);
-            gc.Start(true);
-            Gc_GameOver();
-            
 
 
+
+
+            gc.GameOver += Gc_GameOver;
 
             for (int i = 0; i < populationSize; i++)
             {
@@ -44,7 +44,7 @@ namespace PFBIZL_week10
 
         }
 
-        private void Gc_GameOver()
+        private void Gc_GameOver(object ender)
         {
             generation++;
             label1.Text = string.Format(
@@ -56,7 +56,6 @@ namespace PFBIZL_week10
                              orderby p.GetFitness() descending
                              select p;
             var topPerformers = playerList.Take(populationSize / 2).ToList();
-
 
             gc.ResetCurrentLevel();
             foreach (var p in topPerformers)
@@ -71,20 +70,20 @@ namespace PFBIZL_week10
                     gc.AddPlayer(b.Mutate().ExpandBrain(nbrOfStepsIncrement));
                 else
                     gc.AddPlayer(b.Mutate());
-
-                var winners = from e in topPerformers
-                              where !e.IsWinner
-                              select   e;
-                if (winners.Count() > 0)
-                {
-                    winnerBrain = winners.FirstOrDefault().Brain.Clone();
-
-
-                    return;
-                }
-
             }
             gc.Start();
+
+            var winners = from p in topPerformers
+                          where p.IsWinner
+                          select p;
+            if (winners.Count() > 0)
+            {
+                winnerBrain = winners.FirstOrDefault().Brain.Clone();
+                gc.GameOver -= Gc_GameOver;
+                button1.Visible = true;
+                return;
+            }
+
 
         }
 
