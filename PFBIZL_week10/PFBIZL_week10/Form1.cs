@@ -29,6 +29,7 @@ namespace PFBIZL_week10
             //gc.Start(true);
             gc.AddPlayer(populationSize);
             gc.Start(true);
+            Gc_GameOver();
             
 
 
@@ -99,6 +100,7 @@ namespace PFBIZL_week10
             gc.AddPlayer();
             ga.Focus();
             gc.Start(true);
+            button1.BringToFront();
         }
     }
 }
