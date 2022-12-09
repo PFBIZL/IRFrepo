@@ -36,10 +36,7 @@ namespace PFBIZL_week10
             }
             gc.Start();
 
-            var playerList = from p in gc.GetCurrentPlayers()
-                             orderby p.GetFitness() descending
-                             select p;
-            var topPerformers = playerList.Take(populationSize / 2).ToList();
+            
 
         }
 
@@ -51,10 +48,13 @@ namespace PFBIZL_week10
                 generation);
             label1.BringToFront();
 
+            var playerList = from p in gc.GetCurrentPlayers()
+                             orderby p.GetFitness() descending
+                             select p;
+            var topPerformers = playerList.Take(populationSize / 2).ToList();
 
-            
 
-                gc.ResetCurrentLevel();
+            gc.ResetCurrentLevel();
             foreach (var p in topPerformers)
             {
                 var b = p.Brain.Clone();
