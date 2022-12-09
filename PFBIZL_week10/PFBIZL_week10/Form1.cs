@@ -67,6 +67,17 @@ namespace PFBIZL_week10
                     gc.AddPlayer(b.Mutate().ExpandBrain(nbrOfStepsIncrement));
                 else
                     gc.AddPlayer(b.Mutate());
+
+                var winners = from e in topPerformers
+                              where e.IsWinner
+                              select   e;
+                if (winners.Count() > 0)
+                {
+                    winnerBrain = winners.FirstOrDefault().Brain.Clone();
+                    gc.GameOver -= Gc_GameOver;
+                    return;
+                }
+
             }
             gc.Start();
 
